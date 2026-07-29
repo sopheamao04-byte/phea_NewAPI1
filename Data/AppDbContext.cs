@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NewAPI1.Models;
+using Phea_NewAPI1.Models;
 using Microsoft.EntityFrameworkCore;
-using NewAPI1.Data;
+using Phea_NewAPI1.Data;
 
-namespace NewAPI1.Data
+namespace Phea_NewAPI1.Data
 {
     // ត្រូវតែស្នងត្រកូលពី class DbContext របស់ EF Core
     public class AppDbContext : DbContext
