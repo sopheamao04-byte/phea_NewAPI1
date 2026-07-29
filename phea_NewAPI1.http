@@ -1,0 +1,6 @@
+@phea_NewAPI1_HostAddress = http://localhost:5024
+
+GET {{phea_NewAPI1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
