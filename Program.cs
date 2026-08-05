@@ -1,8 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using Phea_NewAPI1.Data; // Ensure your namespace is included
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// 1. Add services to the container.
+builder.Services.AddControllers();
+
+// ១. ចាប់យកខ្សែស្រឡាយតភ្ជាប់ពីឯកសារ appsettings.json
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// ២. ចុះឈ្មោះ AppDbContext ទៅក្នុង DI Container ដោយប្រាប់វាឱ្យប្រើ SQL Server
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
