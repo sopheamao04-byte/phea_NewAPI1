@@ -14,11 +14,12 @@ namespace Phea_NewAPI1.Models
         // Foreign Key
         public int CatId { get; set; } = 0;
         public string ProName{set;get;} = "";
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price{set;get;} = 0;
         public int Quantity{set;get;} = 0;
 
         // Navigation Property: Product នេះជារបស់ Category មួយ
         [ForeignKey("CatId")]
-        public Category Category { get; set; }
+        public Category Category { get; set; } = null!;
     }
 }

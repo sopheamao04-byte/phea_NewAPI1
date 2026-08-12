@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Phea_NewAPI1.Data;
 
@@ -11,9 +12,11 @@ using Phea_NewAPI1.Data;
 namespace phea_NewAPI1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260805121726_AddStudentTableV2")]
+    partial class AddStudentTableV2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,23 +40,6 @@ namespace phea_NewAPI1.Migrations
                     b.HasKey("CatId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Phea_NewAPI1.Models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("Phea_NewAPI1.Models.Employee", b =>
@@ -84,25 +70,6 @@ namespace phea_NewAPI1.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Phea_NewAPI1.Models.Major", b =>
-                {
-                    b.Property<int>("MajorId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MajorId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("MajorName");
-
-                    b.HasKey("MajorId");
-
-                    b.ToTable("tbl_Majors");
-                });
-
             modelBuilder.Entity("Phea_NewAPI1.Models.Product", b =>
                 {
                     b.Property<int>("ProID")
@@ -131,40 +98,6 @@ namespace phea_NewAPI1.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Phea_NewAPI1.Models.Student", b =>
-                {
-                    b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
-
-                    b.Property<int?>("DepartmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MajorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("FullName");
-
-                    b.Property<string>("PNumber")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)")
-                        .HasColumnName("PhoneNumber");
-
-                    b.HasKey("StudentId");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.HasIndex("MajorId");
-
-                    b.ToTable("tbl_Students");
-                });
-
             modelBuilder.Entity("Phea_NewAPI1.Models.Product", b =>
                 {
                     b.HasOne("Phea_NewAPI1.Models.Category", "Category")
@@ -176,30 +109,9 @@ namespace phea_NewAPI1.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Phea_NewAPI1.Models.Student", b =>
-                {
-                    b.HasOne("Phea_NewAPI1.Models.Department", null)
-                        .WithMany("Students")
-                        .HasForeignKey("DepartmentId");
-
-                    b.HasOne("Phea_NewAPI1.Models.Major", null)
-                        .WithMany("Students")
-                        .HasForeignKey("MajorId");
-                });
-
             modelBuilder.Entity("Phea_NewAPI1.Models.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Phea_NewAPI1.Models.Department", b =>
-                {
-                    b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("Phea_NewAPI1.Models.Major", b =>
-                {
-                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

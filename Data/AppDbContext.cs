@@ -6,6 +6,7 @@ using Phea_NewAPI1.Models;
 using Microsoft.EntityFrameworkCore;
 using Phea_NewAPI1.Data;
 
+
 namespace Phea_NewAPI1.Data
 {
     // ត្រូវតែស្នងត្រកូលពី class DbContext របស់ EF Core
@@ -20,5 +21,11 @@ namespace Phea_NewAPI1.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Major> Majors { get; set; } 
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<StudentAddress> StudentAddresses { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Studentss { get; set; }
     }
 }

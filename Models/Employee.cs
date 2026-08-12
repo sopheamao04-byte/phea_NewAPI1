@@ -10,10 +10,10 @@ namespace Phea_NewAPI1.Models
     public class Employee
     {
         [Key]
-        public int EmpId { get; set;}
-        public string EmpName { get; set;}
-        public string EmpEmail { get; set;} = "";
-        public string EmpPhone { get; set;} = "";
-        public DateTime EmpDOB { get; set;} = DateTime.Now;        
+        public int EmpId { get; set; }
+        public string EmpName { get; set; } = string.Empty;
+        public string EmpEmail { get; set; } = string.Empty;
+        public string EmpPhone { get; set; } = string.Empty;
+        public DateTime EmpDOB { get; set; } = DateTime.Now;        
     }
 }
